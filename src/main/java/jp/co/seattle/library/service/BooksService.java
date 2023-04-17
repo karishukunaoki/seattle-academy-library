@@ -89,12 +89,12 @@ public class BooksService {
 		String sql;
 		if (bookInfo.getThumbnailUrl() == null) {
 			// TODO 取得した書籍情報を更新するようにSQLを修正（タスク５）
-			sql = "UPDATE books SET Title = ? ,Author = ? ,Publisher = ? ,PublishDate = ? ,Isbn = ? ,Description = ? ,BookId = ?";
+			sql = "UPDATE books SET Title = ? ,Author = ? ,Publisher = ? ,Publish_Date = ? ,Isbn = ? ,Description = ? ,upd_date = now() WHERE id = ?";
 			jdbcTemplate.update(sql, bookInfo.getTitle(), bookInfo.getAuthor(), bookInfo.getPublisher(),
 					bookInfo.getPublishDate(), bookInfo.getIsbn(), bookInfo.getDescription(), bookInfo.getBookId());
 		} else {
 			// TODO 取得した書籍情報を更新するようにSQLを修正（タスク５）
-			sql = "UPDATE books SET Title = ? ,Author = ? ,Publisher = ? ,PublishDate = ? ,ThumbnailName = ?,ThumbnailUrl = ? ,Isbn = ? ,Description = ? ,BookId = ?";
+			sql = "UPDATE books SET Title = ? ,Author = ? ,Publisher = ? ,Publish_Date = ? ,Isbn = ? ,Description = ? ,upd_date = now() WHERE id = ?";
 			jdbcTemplate.update(sql, bookInfo.getTitle(), bookInfo.getAuthor(), bookInfo.getPublisher(),
 					bookInfo.getPublishDate(), bookInfo.getThumbnailName(), bookInfo.getThumbnailUrl(),
 					bookInfo.getIsbn(), bookInfo.getDescription(), bookInfo.getBookId());
