@@ -39,7 +39,6 @@ public class AccountController {
 	 * @param model
 	 * @return ホーム画面に遷移
 	 */
-
 	@Transactional
 	@RequestMapping(value = "/createAccount", method = RequestMethod.POST)
 	public String createAccount(Locale locale, @RequestParam("email") String email,
@@ -67,6 +66,8 @@ public class AccountController {
 			System.out.println("パスワードは8文字以上かつ半角英数字に設定してください");
 			return "createAccount";
 		}
+
+		// パラメータで受け取ったアカウント情報をDtoに格納する。
 
 	}
 
