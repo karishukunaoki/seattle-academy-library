@@ -26,12 +26,34 @@ public class UsersService {
 	 * @param userInfo ユーザー情報
 	 */
 	public void registUser(UserInfo userInfo) {
+		//voidは値を返さない
+		//上記でuserInfo(引数)で情報をUserInfoで受け取って移動する
 
 		// SQL生成
 		String sql = "INSERT INTO users (email, password,reg_date,upd_date) VALUES ('" + userInfo.getEmail() + "','"
 				+ userInfo.getPassword() + "',now(),now()" + ")";
+		//userInfoの情報をgetで取ってくる。
+		//userID,email, password,reg_date,upd_date
+		//1,abc@abc,1234,11:10,11:10
+		//”と'の差はString型かchea型などで異なってくる。
 
 		jdbcTemplate.update(sql);
+		//上記でjavaとDTを繋ぐ。sql32の内容を入れてアップデートする。
+	}
+
+	public void changeUser(UserInfo userInfo) {
+		//voidは値を返さない
+		//上記でuserInfo(引数)で情報をUserInfoで受け取って移動する
+
+		// SQL生成
+		String sql = "UPDATE users SET password = ? ,upd_date = NOW()";
+		//userInfoの情報をgetで取ってくる。
+		//userID,email, password,reg_date,upd_date
+		//1,abc@abc,1234,11:10,11:10
+		//”と'の差はString型かchea型などで異なってくる。
+
+		jdbcTemplate.update(sql);
+		//上記でjavaとDTを繋ぐ。sql32の内容を入れてアップデートする。
 	}
 
 	/**
